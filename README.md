@@ -70,8 +70,8 @@ indices (measured on the i7-8700).
 
 **NOTE — complete trace set:** the full 256-index raw traces (`PoC_Kyber/full_traces/`,
 ~2.6 GB) are NOT copied into this bundle to keep it portable. The new index-0 traces and
-3 sample-index traces above are representative; the full set is available on request /
-on the lab machine. (Say the word to include it here.)
+3 sample-index traces above are representative; the full set is available on the link :
+https://zenodo.org/records/18500195?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjY2Yzg3OTA3LTAxN2ItNDhmMS05YWIwLTQ2MjA5MDJhZjIxOCIsImRhdGEiOnt9LCJyYW5kb20iOiIwMzQwZjc4ODIxMmQ4MjAyODFkZTA1NTVjOGRhMDE4MSJ9.D9GvDKt1-FfY18dgsA41OAQRTYQnU-JwhdpIlDMT5mPcmyjc0eTHNH0qabyFaazTc1DFa2Sh76V1V89VsaJ9CA
 
 ## Q4_fingerprinting/ — sampling cadence + fingerprinting attacks
 Filtering was active (SGX-enforced, Q1). Per Intel's advisory the RAPL update rate
