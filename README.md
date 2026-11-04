@@ -91,5 +91,3 @@ The ~1ms update cadence is established from Intel's advisory
 filtering) and from the website traces themselves (~99% of adjacent 1ms samples are
 distinct updates).
 
-**Key point:** ~1ms update cadence + filtered values (SGX enabled) still leak enough for
-both attacks — website ~2x chance, model ~9x chance.
