@@ -7,7 +7,8 @@ RandomForest(300 trees), stratified 75/25 split, reported acc = 97.14%.
 We reproduce that exactly, then stress-test it (repeated splits + leave-one-run-out
 CV) because a single 75/25 split of 140 rows has only ~35 test samples.
 """
-import sys, numpy as np, pandas as pd
+import os, sys, numpy as np, pandas as pd
+HERE = os.path.dirname(os.path.abspath(__file__))
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, LeaveOneGroupOut, StratifiedKFold
 from sklearn.preprocessing import LabelEncoder
@@ -53,5 +54,5 @@ cm=confusion_matrix(y,yp)
 print("\n    per-architecture LORO accuracy:")
 for i,c in enumerate(classes):
     print(f"    {c:16} {100*cm[i,i]/cm[i].sum():5.0f}%  "+("".join("." if j==i else ("X" if cm[i,j] else " ") for j in range(len(classes)))))
-np.save("/tmp/claude-1008/-home-himanshu/0fad18d5-390f-4d1f-982b-6bdddea8c8a6/scratchpad/dnn_cm.npy",cm)
-np.save("/tmp/claude-1008/-home-himanshu/0fad18d5-390f-4d1f-982b-6bdddea8c8a6/scratchpad/dnn_classes.npy",classes)
+np.save(os.path.join(HERE, "dnn_cm.npy"), cm)
+np.save(os.path.join(HERE, "dnn_classes.npy"), classes)

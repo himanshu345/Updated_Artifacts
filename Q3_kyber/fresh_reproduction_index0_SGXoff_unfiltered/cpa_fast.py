@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Fast CPA: chunked hypothesis + incremental Pearson. Value model (K*b)%q, rank of true key."""
-import numpy as np, pandas as pd, csv, sys, time
+import numpy as np, pandas as pd, csv, sys, time, os
 Q = 3329; STEP = 100_000; TRUE = 124
 K = np.arange(Q, dtype=np.int64)
 
@@ -32,13 +32,15 @@ def run(trace, label, log):
             f.write(f"{label}: Traces={n:7d}  Rank={rank:4d}  (+{time.time()-t0:.0f}s)\n")
     return out
 
-base = "/home/himanshu/HDD/Himanshu/RAPL_Consolidated/Asian_Host_Intel_reply/PoC_Kyber"
-log = "/tmp/claude-1008/-home-himanshu/0fad18d5-390f-4d1f-982b-6bdddea8c8a6/scratchpad/cpa_fast.progress"
+HERE = os.path.dirname(os.path.abspath(__file__))   # fresh_reproduction_index0_SGXoff_unfiltered/
+Q3   = os.path.dirname(HERE)                         # Q3_kyber/
+log  = os.path.join(HERE, "cpa_fast.progress")
 open(log, "w").close()
-off = run(f"{base}/fresh_reproduction_index0_SGXOFF/ntt_traces_with_b0_as_random_a0_new.csv", "OFF", log)
-on  = run(f"{base}/fresh_reproduction_index0/ntt_traces_with_b0_as_random_a0_new.csv", "ON ", log)
+off = run(os.path.join(HERE, "ntt_traces_index0_SGXoff_unfiltered.csv"), "OFF", log)
+on  = run(os.path.join(Q3, "fresh_reproduction_index0_SGXon_filtered",
+                       "ntt_traces_index0_SGXon_filtered.csv"), "ON ", log)
 
-with open("/tmp/claude-1008/-home-himanshu/0fad18d5-390f-4d1f-982b-6bdddea8c8a6/scratchpad/cpa_compare.csv","w",newline="") as f:
+with open(os.path.join(HERE, "filtered_vs_unfiltered_rank.csv"), "w", newline="") as f:
     w = csv.writer(f); w.writerow(["Traces","Rank_SGXoff_unfiltered","Rank_SGXon_filtered"])
     for (nn, ro), (_, ri) in zip(off, on): w.writerow([nn, ro, ri])
 
