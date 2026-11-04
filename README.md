@@ -50,7 +50,7 @@ All Q2 Results-table rows are backed by data **and** a collection script in this
 
 ## Q3_kyber/ — CRYSTALS-Kyber CPA (value/identity model)
 Target: the base-case Montgomery product `m0 = s_i · b mod q` (q=3329). Leakage model
-is the **value** `(k·b) mod q`, NOT its Hamming weight.
+is the **value** `(k·b) mod q`.
 
 | Path | Contents |
 |------|----------|
