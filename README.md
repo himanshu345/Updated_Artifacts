@@ -1,6 +1,5 @@
 # Intel Response — Artifact Bundle
-
-Supporting artifacts for `Intel_Response` / `main.pdf`. Every file here is referenced
+Every file here is referenced
 by the response document. Machine for all data: Lenovo ThinkCentre M920t, Intel
 Core i7-8700 (Coffee Lake), microcode 0xFA, Ubuntu 20.04 / Linux 5.15.0-139. SGX
 enabled and locked (CPU-enforced RAPL energy filtering, INTEL-SA-00389).
