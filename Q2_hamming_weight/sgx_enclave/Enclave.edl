@@ -1,0 +1,7 @@
+enclave {
+    trusted {
+        /* Execute `iters` MOV-loads of a fixed operand inside the enclave.
+         * The operand's Hamming weight is the variable under test (paper S V-B). */
+        public void ecall_mov_loop(uint64_t iters, uint64_t operand);
+    };
+};
